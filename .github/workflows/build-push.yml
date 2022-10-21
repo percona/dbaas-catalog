@@ -1,0 +1,44 @@
+name: CI
+
+on:
+  push:
+    branches: [ main ]
+
+
+jobs:
+
+  build: 
+    runs-on: ubuntu-latest
+    
+    steps:
+      - name: Check out
+        uses: actions/checkout@v2
+
+      - name: Login to GitHub Container Registry
+        uses: percona-platform/login-action@v2
+        with:
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Docker meta
+        id: docker_meta
+        uses: docker/metadata-action@v3
+        with:
+          images: percona-lab/dbaas-catalog
+          tags: ${{ github.event.number }}
+
+      - name: Build image
+        uses: docker/build-push-action@v2
+        with:
+          context: . 
+          tags: ${{ steps.docker_meta.outputs.tags }} 
+          file: dbaas-catalog.Dockerfile
+
+      - name: Push image
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.docker_meta.outputs.tags }}
+          file: dbaas-catalog.Dockerfile
