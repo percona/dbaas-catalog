@@ -31,6 +31,16 @@ podman push ghcr.io/percona-lab/dbaas-catalog:latest
 ### install log
 
 ```
+minikube start
+
+operator-sdk olm install
+
+kubectl delete catalogsource operatorhubio-catalog -n olm
+
+kubectl apply -f https://raw.githubusercontent.com/Percona-Lab/dbaas-catalog/main/dbaas-catalog.yaml
+kubectl get catalogsource -n olm
+kubectl get packagemanifest -n olm
+#wait for packagemanifests to appear
 
 cat <<EOF | kubectl apply -f -
 kind: OperatorGroup
@@ -44,6 +54,22 @@ spec:
 EOF
 
 cat <<EOF | kubectl apply -f -
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  name: victoriametrics-operator
+  namespace: default
+spec:
+  channel: stable-v0
+  installPlanApproval: Automatic
+  name: victoriametrics-operator
+  source: dbaas-catalog
+  sourceNamespace: olm
+  startingCSV: victoriametrics-operator.v0.27.2
 EOF
+
+kubectl get sub -n default
+kubectl get csv -n default
+kubectl get deployment -n default
 
 ```
