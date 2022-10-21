@@ -1,0 +1,6 @@
+Schema: olm.semver
+GenerateMajorChannels: true
+GenerateMinorChannels: false
+Stable:
+  Bundles:
+  - Image: quay.io/operatorhubio/percona-server-mongodb-operator:v1.13.0
