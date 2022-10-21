@@ -27,3 +27,23 @@ cd ../..
 podman build . -f dbaas-catalog.Dockerfile -t ghcr.io/percona-lab/dbaas-catalog:latest
 podman push ghcr.io/percona-lab/dbaas-catalog:latest
 ```
+
+### install log
+
+```
+
+cat <<EOF | kubectl apply -f -
+kind: OperatorGroup
+apiVersion: operators.coreos.com/v1
+metadata:
+  name: og-single
+  namespace: default
+spec:
+  targetNamespaces:
+  - default
+EOF
+
+cat <<EOF | kubectl apply -f -
+EOF
+
+```

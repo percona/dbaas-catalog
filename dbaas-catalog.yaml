@@ -1,0 +1,8 @@
+apiVersion: operators.coreos.com/v1alpha1
+kind: CatalogSource
+metadata:
+  name: dbaas-catalog
+  namespace: olm
+spec:
+  sourceType: grpc
+  image: ghcr.io/percona-lab/dbaas-catalog:main
