@@ -68,6 +68,36 @@ spec:
   startingCSV: victoriametrics-operator.v0.27.2
 EOF
 
+cat <<EOF | kubectl apply -f -
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  name: percona-xtradb-cluster-operator
+  namespace: default
+spec:
+  channel: stable-v1
+  installPlanApproval: Automatic
+  name: percona-xtradb-cluster-operator
+  source: dbaas-catalog
+  sourceNamespace: olm
+  startingCSV: percona-xtradb-cluster-operator.v1.10.0
+EOF
+
+cat <<EOF | kubectl apply -f -
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  name: percona-server-mongodb-operator
+  namespace: default
+spec:
+  channel: stable-v1
+  installPlanApproval: Automatic
+  name: percona-server-mongodb-operator
+  source: dbaas-catalog
+  sourceNamespace: olm
+  startingCSV: percona-server-mongodb-operator.v1
+EOF
+
 kubectl get sub -n default
 kubectl get csv -n default
 kubectl get deployment -n default
