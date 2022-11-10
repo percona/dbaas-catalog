@@ -11,12 +11,16 @@
     - [User Stories (Optional)](#user-stories-optional)
       - [Story 1](#story-1)
       - [Story 2](#story-2)
+      - [Story 3](#story-3)
+      - [Story 4](#story-4)
+      - [Story 5](#story-5)
+      - [Story 6](#story-6)
     - [Notes/Constraints/Caveats (Optional)](#notesconstraintscaveats-optional)
     - [Risks and Mitigations](#risks-and-mitigations)
   - [Design Details](#design-details)
     - [Add or Update operator catalog](#add-or-update-operator-catalog)
     - [Catalog tree](#catalog-tree)
-    - [Create new platform](#create-new-platform)
+    - [Create a new platform](#create-a-new-platform)
     - [Git branching](#git-branching)
     - [Catalog images](#catalog-images)
     - [Candidate Channel](#candidate-channel)
@@ -117,7 +121,7 @@ bogged down.
 
 #### Story 1
 
-As SRE I would like to add one catalog and be abe to deploy my variant of DBaaS Platform from it.
+As a SRE I would like to add one catalog and be abe to deploy my variant of DBaaS Platform from it.
 
 For example:
   - install DB Server operator
@@ -126,7 +130,23 @@ For example:
 
 #### Story 2
 
-As DBaaS Platform developer I would like to have single catalog to test interoperability of different operators, their custom resources. Thus to be able to release tested and validated catalog of operators to build DBaaS platform.
+As a SRE I should be able to install any operator from the catalog and subscribe to updates to be able to have updated versions of operators in my kubernetes cluster.
+
+#### Story 3
+
+As a SRE I should be able to switch between catalog channels to try the newest versions of database operators to test my upgrade plans to understand the consequences of upgrading and possible downtime on the production environment.
+
+#### Story 4
+
+As a DBaaS Platform developer I would like to have single catalog to test interoperability of different operators, their custom resources. Thus to be able to release tested and validated catalog of operators to build DBaaS platform.
+
+#### Story 5
+
+As a DBaaS platform developer, I should be able to install the newest version of a database operator and run automated tests against it to improve the overall quality of the operator's interoperability
+
+#### Story 6
+
+As a DBaaS QA, I should be able to install any version of a database operator or a set of database operators in order to test the update/upgrade scenarios and the operator's interoperability.
 
 ### Notes/Constraints/Caveats (Optional)
 
@@ -313,7 +333,9 @@ Required files are:
 
 Other files are optional, and individual catalog might also include some helpers, test and other `yaml` files.
 
-### Create new platform
+### Create a new platform
+
+Platform is a variant of a community (`main` branch) catalog that might have additional quality gates and/or different set or versions of operators.
 
 Platforms could be created in 2 ways:
   - adding new platforms tests and releases into main repo

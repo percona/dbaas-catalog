@@ -4,5 +4,10 @@ metadata:
   name: dbaas-catalog
   namespace: olm
 spec:
+  displayName: DBaaS Platform Catalog
+  publisher: DBaaS Community
   sourceType: grpc
-  image: ghcr.io/percona-lab/dbaas-catalog:main
+  image: ghcr.io/percona-lab/dbaas-catalog:latest
+  updateStrategy:
+    registryPoll:
+      interval: 45m
