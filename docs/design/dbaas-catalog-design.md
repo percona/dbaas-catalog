@@ -15,6 +15,7 @@
     - [Risks and Mitigations](#risks-and-mitigations)
   - [Design Details](#design-details)
     - [Adding/Updating operator bundle](#addingupdating-operator-bundle)
+    - [Catalog tree](#catalog-tree)
     - [Creating new platform](#creating-new-platform)
     - [Git branching](#git-branching)
     - [Catalog images](#catalog-images)
@@ -260,24 +261,6 @@ opm alpha render-veneer semver -o yaml < veneer.yaml > catalog.yaml
 opm validate .
 ```
 
-Catalog tree:
-
-```tree
-catalog
-├── .indexignore          (to make `opm validate` ignore README.md)
-├── README.md
-├── OperatorA
-│   ├── .indexignore
-│   ├── OWNERS
-│   ├── veneer.yaml
-│   └── catalog.yaml
-└── OperatorB
-    ├── .indexignore
-    ├── OWNERS
-    ├── veneer.yaml
-    └── catalog.yaml
-```
-
 Create PR and get it merged.
 
 
@@ -324,6 +307,31 @@ podman push ghcr.io/percona-platform/dbaas-catalog:main
 
 Questions:
   - could it be links to the veneers in other GH repos instead (submodules)?
+
+### Catalog tree
+
+```tree
+catalog
+├── .indexignore          (to make `opm validate` ignore README.md)
+├── README.md
+├── OperatorA
+│   ├── .indexignore      (to make `opm validate` ignore OWNERS)
+│   ├── OWNERS            (owners of the operator catalog to review PRs)
+│   ├── veneer.yaml       (Veneer to build catalog.yaml)
+│   └── catalog.yaml
+└── OperatorB
+    ├── .indexignore
+    ├── OWNERS
+    ├── veneer.yaml
+    └── catalog.yaml
+```
+
+Required files are:
+  - `veneer.yaml`
+  - `catalog.yaml`
+
+
+Other files are optional, and individual catalog might also include some helpers, test and other `yaml` files.
 
 ### Creating new platform
 
