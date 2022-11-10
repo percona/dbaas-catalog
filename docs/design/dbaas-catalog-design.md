@@ -14,39 +14,19 @@
     - [Notes/Constraints/Caveats (Optional)](#notesconstraintscaveats-optional)
     - [Risks and Mitigations](#risks-and-mitigations)
   - [Design Details](#design-details)
-    - [Adding/Updating operator bundle](#addingupdating-operator-bundle)
+    - [Add or Update operator catalog](#add-or-update-operator-catalog)
     - [Catalog tree](#catalog-tree)
-    - [Creating new platform](#creating-new-platform)
+    - [Create new platform](#create-new-platform)
     - [Git branching](#git-branching)
     - [Catalog images](#catalog-images)
     - [Candidate Channel](#candidate-channel)
-    - [Using Catalog](#using-catalog)
+    - [Use Catalog](#use-catalog)
     - [Test Plan](#test-plan)
         - [Unit tests](#unit-tests)
         - [Integration tests](#integration-tests)
         - [e2e tests](#e2e-tests)
     - [Upgrade / Downgrade Strategy](#upgrade--downgrade-strategy)
     - [Version Skew Strategy](#version-skew-strategy)
-  - [Production Readiness Review Questionnaire](#production-readiness-review-questionnaire)
-    - [Feature Enablement and Rollback](#feature-enablement-and-rollback)
-          - [How can this feature be enabled / disabled in a live cluster?](#how-can-this-feature-be-enabled--disabled-in-a-live-cluster)
-          - [Does enabling the feature change any default behavior?](#does-enabling-the-feature-change-any-default-behavior)
-          - [Can the feature be disabled once it has been enabled (i.e. can we roll back the enablement)?](#can-the-feature-be-disabled-once-it-has-been-enabled-ie-can-we-roll-back-the-enablement)
-          - [What happens if we reenable the feature if it was previously rolled back?](#what-happens-if-we-reenable-the-feature-if-it-was-previously-rolled-back)
-          - [Are there any tests for feature enablement/disablement?](#are-there-any-tests-for-feature-enablementdisablement)
-    - [Rollout, Upgrade and Rollback Planning](#rollout-upgrade-and-rollback-planning)
-    - [Monitoring Requirements](#monitoring-requirements)
-    - [Dependencies](#dependencies)
-          - [Does this feature depend on any specific services running in the cluster?](#does-this-feature-depend-on-any-specific-services-running-in-the-cluster)
-    - [Scalability](#scalability)
-          - [Will enabling / using this feature result in any new API calls?](#will-enabling--using-this-feature-result-in-any-new-api-calls)
-          - [Will enabling / using this feature result in introducing new API types?](#will-enabling--using-this-feature-result-in-introducing-new-api-types)
-          - [Will enabling / using this feature result in any new calls to the cloud provider?](#will-enabling--using-this-feature-result-in-any-new-calls-to-the-cloud-provider)
-          - [Will enabling / using this feature result in increasing size or count of the existing API objects?](#will-enabling--using-this-feature-result-in-increasing-size-or-count-of-the-existing-api-objects)
-          - [Will enabling / using this feature result in increasing time taken by any operations covered by existing SLIs/SLOs?](#will-enabling--using-this-feature-result-in-increasing-time-taken-by-any-operations-covered-by-existing-slisslos)
-          - [Will enabling / using this feature result in non-negligible increase of resource usage (CPU, RAM, disk, IO, ...) in any components?](#will-enabling--using-this-feature-result-in-non-negligible-increase-of-resource-usage-cpu-ram-disk-io--in-any-components)
-    - [Troubleshooting](#troubleshooting)
-          - [What are other known failure modes?](#what-are-other-known-failure-modes)
   - [Implementation History](#implementation-history)
   - [Drawbacks](#drawbacks)
   - [Alternatives](#alternatives)
@@ -224,9 +204,9 @@ C4Context
     Rel_U(RegOperatorHubIO, DBaaSPlatformCatalog, "Updates image in the catalog", "image")
     Rel_U(OperatorHubIO, RegOperatorHubIO, "Creates bundle", "image")
 ```
-### Adding/Updating operator bundle
+### Add or Update operator catalog
 
-To add new operator - create `veneer`:
+To add new operator - create `veneer.yaml`:
 
 ```sh
 mkdir catalog/percona-xtradb-cluster-operator ; cd catalog/percona-xtradb-cluster-operator
@@ -261,7 +241,7 @@ opm alpha render-veneer semver -o yaml < veneer.yaml > catalog.yaml
 opm validate .
 ```
 
-Create PR and get it merged.
+Create PR and get it merged (`veener.yaml` and `catalog.yaml`).
 
 
 ```mermaid
@@ -333,7 +313,7 @@ Required files are:
 
 Other files are optional, and individual catalog might also include some helpers, test and other `yaml` files.
 
-### Creating new platform
+### Create new platform
 
 Platforms could be created in 2 ways:
   - adding new platforms tests and releases into main repo
@@ -407,7 +387,7 @@ Failing CI pipelines in this case could be indicators but still could land into 
   - sanity tests
   - image tests
 
-### Using Catalog
+### Use Catalog
 
 To use latest upstream community DBaaS Platform Catalog:
 ```sh
@@ -525,238 +505,6 @@ enhancement:
 - Will any other components on the node change? For example, changes to CSI,
   CRI or CNI may require updating that component before the kubelet.
 -->
-
-## Production Readiness Review Questionnaire
-
-<!--
-
-Production readiness reviews are intended to ensure that features merging into
-Kubernetes are observable, scalable and supportable; can be safely operated in
-production environments, and can be disabled or rolled back in the event they
-cause increased failures in production. See more in the PRR KEP at
-https://git.k8s.io/enhancements/keps/sig-architecture/1194-prod-readiness.
-
-The production readiness review questionnaire must be completed and approved
-for the KEP to move to `implementable` status and be included in the release.
-
-In some cases, the questions below should also have answers in `kep.yaml`. This
-is to enable automation to verify the presence of the review, and to reduce review
-burden and latency.
-
-The KEP must have a approver from the
-[`prod-readiness-approvers`](http://git.k8s.io/enhancements/OWNERS_ALIASES)
-team. Please reach out on the
-[#prod-readiness](https://kubernetes.slack.com/archives/CPNHUMN74) channel if
-you need any help or guidance.
--->
-
-### Feature Enablement and Rollback
-
-<!--
-This section must be completed when targeting alpha to a release.
--->
-
-###### How can this feature be enabled / disabled in a live cluster?
-
-<!--
-Pick one of these and delete the rest.
-
-Documentation is available on [feature gate lifecycle] and expectations, as
-well as the [existing list] of feature gates.
-
-[feature gate lifecycle]: https://git.k8s.io/community/contributors/devel/sig-architecture/feature-gates.md
-[existing list]: https://kubernetes.io/docs/reference/command-line-tools-reference/feature-gates/
--->
-
-- [ ] Feature gate (also fill in values in `kep.yaml`)
-  - Feature gate name:
-  - Components depending on the feature gate:
-- [ ] Other
-  - Describe the mechanism:
-  - Will enabling / disabling the feature require downtime of the control
-    plane?
-  - Will enabling / disabling the feature require downtime or reprovisioning
-    of a node? (Do not assume `Dynamic Kubelet Config` feature is enabled).
-
-###### Does enabling the feature change any default behavior?
-
-<!--
-Any change of default behavior may be surprising to users or break existing
-automations, so be extremely careful here.
--->
-
-###### Can the feature be disabled once it has been enabled (i.e. can we roll back the enablement)?
-
-<!--
-Describe the consequences on existing workloads (e.g., if this is a runtime
-feature, can it break the existing applications?).
-
-Feature gates are typically disabled by setting the flag to `false` and
-restarting the component. No other changes should be necessary to disable the
-feature.
-
-NOTE: Also set `disable-supported` to `true` or `false` in `kep.yaml`.
--->
-
-###### What happens if we reenable the feature if it was previously rolled back?
-
-###### Are there any tests for feature enablement/disablement?
-
-<!--
-The e2e framework does not currently support enabling or disabling feature
-gates. However, unit tests in each component dealing with managing data, created
-with and without the feature, are necessary. At the very least, think about
-conversion tests if API types are being modified.
-
-Additionally, for features that are introducing a new API field, unit tests that
-are exercising the `switch` of feature gate itself (what happens if I disable a
-feature gate after having objects written with the new field) are also critical.
-You can take a look at one potential example of such test in:
-https://github.com/kubernetes/kubernetes/pull/97058/files#diff-7826f7adbc1996a05ab52e3f5f02429e94b68ce6bce0dc534d1be636154fded3R246-R282
--->
-
-### Rollout, Upgrade and Rollback Planning
-
-<!--
-This section must be completed when targeting beta to a release.
--->
-
-### Monitoring Requirements
-
-<!--
-This section must be completed when targeting beta to a release.
-
-For GA, this section is required: approvers should be able to confirm the
-previous answers based on experience in the field.
--->
-
-### Dependencies
-
-<!--
-This section must be completed when targeting beta to a release.
--->
-
-###### Does this feature depend on any specific services running in the cluster?
-
-<!--
-Think about both cluster-level services (e.g. metrics-server) as well
-as node-level agents (e.g. specific version of CRI). Focus on external or
-optional services that are needed. For example, if this feature depends on
-a cloud provider API, or upon an external software-defined storage or network
-control plane.
-
-For each of these, fill in the following—thinking about running existing user workloads
-and creating new ones, as well as about cluster-level services (e.g. DNS):
-  - [Dependency name]
-    - Usage description:
-      - Impact of its outage on the feature:
-      - Impact of its degraded performance or high-error rates on the feature:
--->
-
-### Scalability
-
-<!--
-For alpha, this section is encouraged: reviewers should consider these questions
-and attempt to answer them.
-
-For beta, this section is required: reviewers must answer these questions.
-
-For GA, this section is required: approvers should be able to confirm the
-previous answers based on experience in the field.
--->
-
-###### Will enabling / using this feature result in any new API calls?
-
-<!--
-Describe them, providing:
-  - API call type (e.g. PATCH pods)
-  - estimated throughput
-  - originating component(s) (e.g. Kubelet, Feature-X-controller)
-Focusing mostly on:
-  - components listing and/or watching resources they didn't before
-  - API calls that may be triggered by changes of some Kubernetes resources
-    (e.g. update of object X triggers new updates of object Y)
-  - periodic API calls to reconcile state (e.g. periodic fetching state,
-    heartbeats, leader election, etc.)
--->
-
-###### Will enabling / using this feature result in introducing new API types?
-
-<!--
-Describe them, providing:
-  - API type
-  - Supported number of objects per cluster
-  - Supported number of objects per namespace (for namespace-scoped objects)
--->
-
-###### Will enabling / using this feature result in any new calls to the cloud provider?
-
-<!--
-Describe them, providing:
-  - Which API(s):
-  - Estimated increase:
--->
-
-###### Will enabling / using this feature result in increasing size or count of the existing API objects?
-
-<!--
-Describe them, providing:
-  - API type(s):
-  - Estimated increase in size: (e.g., new annotation of size 32B)
-  - Estimated amount of new objects: (e.g., new Object X for every existing Pod)
--->
-
-###### Will enabling / using this feature result in increasing time taken by any operations covered by existing SLIs/SLOs?
-
-<!--
-Look at the [existing SLIs/SLOs].
-
-Think about adding additional work or introducing new steps in between
-(e.g. need to do X to start a container), etc. Please describe the details.
-
-[existing SLIs/SLOs]: https://git.k8s.io/community/sig-scalability/slos/slos.md#kubernetes-slisslos
--->
-
-###### Will enabling / using this feature result in non-negligible increase of resource usage (CPU, RAM, disk, IO, ...) in any components?
-
-<!--
-Things to keep in mind include: additional in-memory state, additional
-non-trivial computations, excessive access to disks (including increased log
-volume), significant amount of data sent and/or received over network, etc.
-This through this both in small and large cases, again with respect to the
-[supported limits].
-
-[supported limits]: https://git.k8s.io/community//sig-scalability/configs-and-limits/thresholds.md
--->
-
-### Troubleshooting
-
-<!--
-This section must be completed when targeting beta to a release.
-
-For GA, this section is required: approvers should be able to confirm the
-previous answers based on experience in the field.
-
-The Troubleshooting section currently serves the `Playbook` role. We may consider
-splitting it into a dedicated `Playbook` document (potentially with some monitoring
-details). For now, we leave it here.
--->
-
-###### What are other known failure modes?
-
-<!--
-For each of them, fill in the following information by copying the below template:
-  - [Failure mode brief description]
-    - Detection: How can it be detected via metrics? Stated another way:
-      how can an operator troubleshoot without logging into a master or worker node?
-    - Mitigations: What can be done to stop the bleeding, especially for already
-      running user workloads?
-    - Diagnostics: What are the useful log messages and their required logging
-      levels that could help debug the issue?
-      Not required until feature graduated to beta.
-    - Testing: Are there any tests for failure mode? If not, describe why.
--->
-
 ## Implementation History
 
 <!--
