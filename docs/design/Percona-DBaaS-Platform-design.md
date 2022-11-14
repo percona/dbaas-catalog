@@ -94,6 +94,7 @@ Platform owners:
   - @denisok
   - @nmarukovich
   - @gen1us2k
+  - @cap1984
 
 Owners of specific operators:
   - @nmarukovich
