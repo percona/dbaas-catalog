@@ -121,7 +121,7 @@ bogged down.
 
 #### Story 1
 
-As a SRE I would like to add one catalog and be abe to deploy my variant of DBaaS Platform from it.
+As a SRE I would like to add one catalog and be able to deploy my variant of DBaaS Platform from it.
 
 For example:
   - install DB Server operator
