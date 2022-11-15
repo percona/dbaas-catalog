@@ -18,7 +18,7 @@ operator-sdk olm install
 
 kubectl delete catalogsource operatorhubio-catalog -n olm
 
-kubectl apply -f https://raw.githubusercontent.com/Percona-Lab/dbaas-catalog/main/dbaas-catalog.yaml
+kubectl apply -f https://raw.githubusercontent.com/percona/dbaas-catalog/main/dbaas-catalog.yaml
 kubectl get catalogsource -n olm
 kubectl get packagemanifest -n olm
 #wait for packagemanifests to appear

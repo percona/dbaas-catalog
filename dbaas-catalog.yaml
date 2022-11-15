@@ -7,7 +7,7 @@ spec:
   displayName: DBaaS Platform Catalog
   publisher: DBaaS Community
   sourceType: grpc
-  image: ghcr.io/percona-lab/dbaas-catalog:latest
+  image: ghcr.io/percona/dbaas-catalog:latest
   updateStrategy:
     registryPoll:
       interval: 45m
