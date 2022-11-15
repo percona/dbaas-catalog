@@ -199,8 +199,9 @@ Catalog should have number of different testing layers to test:
 This repo provides only Catalog, OLM [operator bundles](https://olm.operatorframework.io/docs/tasks/creating-operator-bundle/) and their images are provided and maintained by individual operators.
 
 There could be number of bundle sources for this DBaaS Platform Catalog. Operator owners could:
-  1. create their own bundles and images
+  1. create their own bundles and images and push them to the operator's registry
   2. push operator's manifest and metadata to the [Kubernetes Community operators](https://github.com/k8s-operatorhub/community-operators) repo
+  3. use hybrid approach, when RC and testing bundles are created in operator's registry and release one both in operator's and community one
 
 When in a first case Operator owners are responsible to create CI/CD pipelines to build and publish bundle images, in a second case Kubernetes Community does that.
 
@@ -249,7 +250,7 @@ GenerateMinorChannels: false
 Stable:
   Bundles:
   - Image: quay.io/operatorhubio/percona-xtradb-cluster-operator:v1.10.0
-  - Image: docker.io/percona-platform/percona-xtradb-cluster-operator:v1.11.0
+  - Image: docker.io/percona/percona-xtradb-cluster-operator:v1.11.0-bundle
 ```
 
 Use channel names Candidate, Fast, and Stable as stated in [Veneer specification](https://olm.operatorframework.io/docs/reference/veneers/#specification).
@@ -301,8 +302,8 @@ deactivate OperatorOwner
 GH CI/CD pipeline would create new image and push it to the registry:
 
 ```
-podman build . -f dbaas-catalog.Dockerfile -t ghcr.io/percona-platform/dbaas-catalog:main
-podman push ghcr.io/percona-platform/dbaas-catalog:main
+podman build . -f dbaas-catalog.Dockerfile -t ghcr.io/percona/dbaas-catalog:main
+podman push ghcr.io/percona/dbaas-catalog:main
 ```
 
 Questions:
@@ -394,10 +395,10 @@ gitGraph
 
 ### Catalog images
 
-  - new image for every commit in `main` branch `repo_url/catalog:main`
-  - new image after `main` passes all the tests `repo_url/catalog:latest`
-  - new image for platform branches with every commit `repo_url/platformx:main`
-  - new image for every tag on platform branch `repo_url/platformx:latest` and `repo_url/platformx:vX.Y.Z`
+  - new image for every commit in `main` branch `github.com/percona/catalog:main`
+  - new image after `main` passes all the tests `github.com/percona/catalog:latest`
+  - new image for platform branches with every commit `github.com/percona/platformx:main`
+  - new image for every tag on platform branch `github.com/percona/platformx:latest` and `github.com/percona/platformx:vX.Y.Z`
 
 ### Candidate Channel
 
@@ -413,7 +414,7 @@ Failing CI pipelines in this case could be indicators but still could land into 
 
 To use latest upstream community DBaaS Platform Catalog:
 ```sh
-kubectl apply -f https://raw.githubusercontent.com/Percona-Lab/dbaas-catalog/main/dbaas-catalog.yaml
+kubectl apply -f https://raw.githubusercontent.com/percona/dbaas-catalog/main/dbaas-catalog.yaml
 kubectl get catalogsource -n olm
 kubectl get packagemanifest -n olm
 ```

@@ -74,36 +74,41 @@ Create the branch `percona-platform` that would be as close as possible to a `ma
 
 Operator's team creates PR (manually or automatically with CI) and changes first land to `main` and then merged to the `percona-platform`. Merge to `percona-platform` happens either automatically or manually by owners (after some quality gate).
 
-Create `docker.io/percona-platform` registry to store platform images. Bundles use same operator's name (for example `quay.io/operatorhubio/percona-server-mongodb-operator:v1.13.0`) so pushing it to the `percona` or `perconalab` might introduce more misunderstanding and confusions what is operator image and what is a bundle.
+Create `docker.io/percona/dbaas-catalog` registry to store catalog images. Bundles use same operator's name `docker.io/percona/percona-server-mongodb-operator:v1.13.0-bundle`) with `vX.Y.Z-bundle` tag. Testing and RC images are pushed to `percona-lab` registry.
 
 Images would be created automatically by CI in `dbaas-catalog`:
-  - with any commit to `percona-platform`: docker.io/percona-platform/dbaas-catalog:main
+  - with any commit to `percona-platform`: docker.io/percona/dbaas-catalog:main
   - when new tag pushed to `percona-platform` branch:
-    - `docker.io/percona-platform/dbaas-catalog:latest`
-    - `docker.io/percona-platform/dbaas-catalog:vX.Y.Z`
+    - `docker.io/percona/dbaas-catalog:latest`
+    - `docker.io/percona/dbaas-catalog:vX.Y.Z`
 
 Images required from operators are bundle image:
-  - **Candidate** Channel: `docker.io/percona-platform/operatorA:vX.Y.Z-rcN`
-  - **Stable** Channel: `docker.io/percona-platform/operatorA:vX.Y.Z`
+  - **Candidate** Channel: `docker.io/percona-lab/operatorA:vX.Y.Z-rcN-bundle`
+  - **Stable** Channel: `docker.io/percona/operatorA:vX.Y.Z-bundle`
 
 ### Owners
 
 Platform owners are responsible and accountable for the platform CI/CD, quality (green actions) and state of the operators (new versions) in the catalog.
 
 Platform owners:
-  - @denisok
   - @nmarukovich
   - @gen1us2k
   - @cap1984
+  - @beatahandzelova
 
 Owners of specific operators:
   - @nmarukovich
     - PSMDB
     - PXC
     - PS
+  - @cap1984
+    - PG
   - @gen1us2k
     - VM
     - DBaaS
+  - @beatahandzelova
+    - CI/CD
+    - quality engineer for releases
 
 ### Workflow
 
