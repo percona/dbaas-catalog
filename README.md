@@ -4,31 +4,12 @@
 ## Status of this repo is Proof of Concept. Please don't use!
 
 ## DBaaS Catalog
-Welcome! This repository is OLM Catalog for DBaaS
 
-### build log
+Welcome! This repository is a DBaaS Platform OLM Catalog which include sets of operators to enable DBaaS on Kubernetes.
 
-```
-mkdir catalog/percona-xtradb-cluster-operator ; cd catalog/percona-xtradb-cluster-operator
-cat << EOF >> veneer.yaml
-Schema: olm.semver
-GenerateMajorChannels: true
-GenerateMinorChannels: false
-Stable:
-  Bundles:
-  - Image: quay.io/operatorhubio/percona-xtradb-cluster-operator:v1.10.0
-EOF
+See [Design](docs/design/dbaas-catalog-design.md) for more details.
 
-opm alpha render-veneer semver -o yaml < veneer.yaml > catalog.yaml
-opm validate .
-
-cd ../..
-
-podman build . -f dbaas-catalog.Dockerfile -t ghcr.io/percona-lab/dbaas-catalog:latest
-podman push ghcr.io/percona-lab/dbaas-catalog:latest
-```
-
-### install log
+### Use
 
 ```
 minikube start
@@ -37,7 +18,7 @@ operator-sdk olm install
 
 kubectl delete catalogsource operatorhubio-catalog -n olm
 
-kubectl apply -f https://raw.githubusercontent.com/Percona-Lab/dbaas-catalog/main/dbaas-catalog.yaml
+kubectl apply -f https://raw.githubusercontent.com/percona/dbaas-catalog/main/dbaas-catalog.yaml
 kubectl get catalogsource -n olm
 kubectl get packagemanifest -n olm
 #wait for packagemanifests to appear
