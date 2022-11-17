@@ -1,9 +1,11 @@
-name: CI Build and Push image
+name: Build and Push image
 
 on:
   push:
     branches: [ main ]
-
+    tags:
+      - v*
+  workflow_dispatch:
 
 jobs:
 
@@ -13,6 +15,16 @@ jobs:
     steps:
       - name: Check out
         uses: actions/checkout@v2
+
+      - name: Set latest tag
+        if: ${{ github.ref_name == 'main' }}
+        run: |
+          echo "image_tag=latest" >> $GITHUB_ENV
+
+      - name: Set release tag
+        if: ${{ github.ref_name != 'main' }}
+        run: |
+          echo "image_tag=$GITHUB_REF_NAME" >> $GITHUB_ENV
 
       - name: Login to GitHub Container Registry
         uses: docker/login-action@v2
@@ -26,7 +38,7 @@ jobs:
         uses: docker/metadata-action@v3
         with:
           images: ghcr.io/percona/dbaas-catalog
-          tags: latest
+          tags: ${{ env.image_tag }}
 
       - name: Build image
         uses: docker/build-push-action@v2
