@@ -252,7 +252,7 @@ Stable:
   - Image: quay.io/operatorhubio/percona-xtradb-cluster-operator:v1.10.0
   - Image: docker.io/percona/percona-xtradb-cluster-operator:v1.11.0-bundle
 ```
-
+example-operator
 Use channel names Candidate, Fast, and Stable as stated in [Veneer specification](https://olm.operatorframework.io/docs/reference/veneers/#specification).
 
 Generate operator catalog:
@@ -357,37 +357,40 @@ Platform branches should merge with `main` as often as possible and new tags tri
 gitGraph
        commit
        commit
+       commit tag: "v1.0.0"
        commit
        branch PlatformX
        checkout PlatformX
-       commit tag: "v1.0.0"
+       commit tag: "platformX/v1.0.0"
        checkout main
        commit
        commit id: "fix_1"
+       commit tag: "v1.1.0"
        checkout PlatformX
        cherry-pick id: "fix_1"
-       commit tag: "v1.0.1"
+       commit tag: "platformX/v1.0.1"
        checkout main
        commit
        commit
        checkout PlatformX
        merge main
-       commit tag: "v1.1.0"
+       commit tag: "platformX/v1.1.0"
        checkout main
        commit
        branch PlatformY
        checkout PlatformY
-       commit tag: "v1.0.0"
+       commit tag: "platformY/v1.0.0"
        checkout main
        commit
        commit
+       commit tag: "v2.0.0"
        commit
        checkout PlatformY
        merge main
-       commit tag: "v1.1.0"
+       commit tag: "platformY/v1.1.0"
        checkout PlatformX
        merge main
-       commit tag: "v2.0.0"
+       commit tag: "platformX/v2.0.0"
        checkout main
        commit
        commit
