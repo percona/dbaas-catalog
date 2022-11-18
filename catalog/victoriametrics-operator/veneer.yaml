@@ -4,3 +4,4 @@ GenerateMinorChannels: false
 Stable:
   Bundles:
   - Image: quay.io/operatorhubio/victoriametrics-operator:v0.27.2
+  - Image: quay.io/operatorhubio/victoriametrics-operator:v0.29.1
