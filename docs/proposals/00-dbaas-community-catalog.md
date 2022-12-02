@@ -63,7 +63,7 @@ There are some catalogs already available:
   - [OperatorHub.io](https://operatorhub.io): https://github.com/k8s-operatorhub/community-operators
   - [RH Catalogs](https://docs.openshift.com/container-platform/4.6/operators/understanding/olm-rh-catalogs.html#olm-rh-catalogs_olm-rh-catalogs): https://github.com/redhat-openshift-ecosystem/community-operators-prod
 
-Existing catalogs have all possible operators and could be overkill for most of the systems, as well as for developers to ensure that some sub-set of it works good together to solve particular problems.
+Existing catalogs include all available operators. This could be overkill for most of the systems and for developers to ensure that some sub-set of it works well together to solve particular problems.
 
 Links:
   - https://olm.operatorframework.io/
