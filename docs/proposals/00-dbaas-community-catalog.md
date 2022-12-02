@@ -178,7 +178,7 @@ proposal will be implemented, this is the place to discuss them.
 
 Another proposal would be submitted for the DBaaS catalog design.
 
-For community based catalog there should be a design that enables community and community contributions.
+For a community-based catalog, a design should enable community and community contributions.
 
 
 ### Graduation Criteria
