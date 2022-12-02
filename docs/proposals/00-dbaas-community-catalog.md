@@ -99,7 +99,7 @@ The "Design Details" section below is for the real
 nitty-gritty.
 -->
 
-Proposal is to create a new catalog of operators that solves one particular problem: DBaaS Platform. The scope of that catalog would be everything related to ability to build DBaaS Platform which includes but not limits to such [categories](https://github.com/k8s-operatorhub/community-operators/blob/main/categories.json):
+The proposal is to create a new catalog of operators that solves one particular problem: setting up a DBaaS Platform. The scope of that catalog would be everything related to the ability to build DBaaS Platform, which includes but is not limited to the following [categories](https://github.com/k8s-operatorhub/community-operators/blob/main/categories.json):
   - Cloud Provider
   - Database
   - Logging & Tracing
