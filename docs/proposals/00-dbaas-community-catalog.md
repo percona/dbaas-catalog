@@ -118,7 +118,7 @@ bogged down.
 
 #### Story 1
 
-As the SRE I would like to have a Kubernetes cluster dedicated for DB deployments and install all needed operators for only that specific use case with OLM.
+As an SRE, I would like to set up a Kubernetes cluster dedicated to database deployments and install all required operators for only that specific use case with OLM.
 
 ### Notes/Constraints/Caveats
 
