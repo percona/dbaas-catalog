@@ -105,7 +105,7 @@ The proposal is to create a new catalog of operators that solves one particular 
   - Logging & Tracing
   - Monitoring
 
-Such catalog will allow to separate different concerns, to have smaller repos/images/systems, to harden security by reducing the scope.
+Such a catalog will allow for separating different concerns, having smaller repos/images/systems, for hardening security by reducing the scope.
 
 ### User Stories (Optional)
 
