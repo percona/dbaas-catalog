@@ -357,7 +357,7 @@ Major milestones might include:
 Why should this KEP _not_ be implemented?
 -->
 
-Global catalog could be enough as it takes not that much space and maybe lucks better API on categories to select needed operators for installation.
+A global catalog might be sufficient as it does not require that much space and maybe only needs a better API to select the desired operators based on categories.
 
 ## Alternatives
 
