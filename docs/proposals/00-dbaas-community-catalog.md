@@ -45,7 +45,7 @@ updates.
 
 [documentation style guide]: https://github.com/kubernetes/community/blob/master/contributors/guide/style-guide.md
 -->
-OLM Catalogs are part of Operator Lifecycle Manager ([OLM](https://olm.operatorframework.io/)) framework to provide set of operators that extend Kubernetes. DBaaS Catalog would provide set of operators to extend Kubernetes to deliver DBaaS Platform based on it.
+OLM Catalogs are part of the Operator Lifecycle Manager ([OLM](https://olm.operatorframework.io/)) framework to provide a set of operators that extend Kubernetes. DBaaS Catalog would provide a set of operators to extend Kubernetes to deliver a DBaaS Platform based on these.
 
 ## Motivation
 
