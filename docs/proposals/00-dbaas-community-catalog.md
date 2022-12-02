@@ -77,7 +77,7 @@ List the specific goals of the KEP. What is it trying to achieve? How will we
 know that this has succeeded?
 -->
 
-Create and Maintain DBaaS catalog to provide instrumentation (catalog of operators) to build DBaaS Platform on Kubernetes base. Enable community to develop and extend this catalog.
+Create and maintain a DBaaS catalog to provide instrumentation (catalog of operators) to build a DBaaS Platform on Kubernetes. Enable the community to maintain and extend this catalog.
 
 ### Non-Goals
 
