@@ -131,7 +131,7 @@ This might be a good place to talk about core concepts and how they relate.
 
 #### DBaaS Platform
 
-To set the base for motivation lets imagine what DBaaS Platform could be (so there would imaginary proposal for the imaginary problem).
+To set the basis for motivation, let's imagine what a DBaaS Platform could look like (so there would be an imaginary proposal for the imaginary problem).
 
 Databases could be deployed:
   - on the same kubernetes cluster with applications
