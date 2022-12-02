@@ -57,7 +57,7 @@ demonstrate the interest in a KEP within the wider Kubernetes community.
 
 [experience reports]: https://github.com/golang/go/wiki/ExperienceReports
 -->
-The Operator Lifecycle Manager ([OLM](https://olm.operatorframework.io/)) extends Kubernetes to provide a declarative way to install, manage, and upgrade Operators on a cluster. [OLM Catalogs](https://olm.operatorframework.io/docs/concepts/crds/catalogsource/) is the way to distribute set of operator that can be installed onto a cluster via OLM.
+The Operator Lifecycle Manager ([OLM](https://olm.operatorframework.io/)) extends Kubernetes to provide a declarative way to install, manage, and upgrade Operators on a cluster. [OLM Catalogs](https://olm.operatorframework.io/docs/concepts/crds/catalogsource/) are the way to distribute a set of operators that can be installed onto a cluster via OLM.
 
 There are some catalogs already available:
   - [OperatorHub.io](https://operatorhub.io): https://github.com/k8s-operatorhub/community-operators
