@@ -6,3 +6,4 @@ Stable:
   - Image: quay.io/operatorhubio/percona-xtradb-cluster-operator:v1.8.0
   - Image: quay.io/operatorhubio/percona-xtradb-cluster-operator:v1.9.0
   - Image: quay.io/operatorhubio/percona-xtradb-cluster-operator:v1.10.0
+  - Image: quay.io/openshift-community-operators/percona-xtradb-cluster-operator:v1.11.0
