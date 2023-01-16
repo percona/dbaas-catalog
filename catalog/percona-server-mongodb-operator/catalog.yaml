@@ -4,13 +4,17 @@ name: percona-server-mongodb-operator
 schema: olm.package
 ---
 entries:
+- name: percona-server-mongodb-operator.v1.12.0
+- name: percona-server-mongodb-operator.v1
+  replaces: percona-server-mongodb-operator.v1.12.0
+name: fast-v1
+package: percona-server-mongodb-operator
+schema: olm.channel
+---
+entries:
 - name: percona-server-mongodb-operator.v1.10.0
 - name: percona-server-mongodb-operator.v1.11.0
   replaces: percona-server-mongodb-operator.v1.10.0
-- name: percona-server-mongodb-operator.v1.12.0
-  replaces: percona-server-mongodb-operator.v1.11.0
-- name: percona-server-mongodb-operator.v1
-  replaces: percona-server-mongodb-operator.v1.12.0
 name: stable-v1
 package: percona-server-mongodb-operator
 schema: olm.channel
