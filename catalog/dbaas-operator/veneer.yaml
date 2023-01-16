@@ -6,3 +6,4 @@ Stable:
   - Image: docker.io/percona/dbaas-operator-bundle:0.0.12
   - Image: docker.io/percona/dbaas-operator-bundle:0.0.13
   - Image: docker.io/percona/dbaas-operator-bundle:0.0.15
+  - Image: docker.io/percona/dbaas-operator-bundle:0.0.17
