@@ -7,8 +7,6 @@ spec:
   displayName: Percona DBaaS Catalog
   publisher: Percona
   sourceType: grpc
-  grpcPodConfig:
-    securityContextConfig: restricted
   image: docker.io/percona/dbaas-catalog:latest
   updateStrategy:
     registryPoll:
