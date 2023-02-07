@@ -3,8 +3,8 @@ GenerateMajorChannels: true
 GenerateMinorChannels: false
 Stable:
   Bundles:
-  - Image: docker.io/percona/dbaas-operator-bundle:0.0.13
   - Image: docker.io/percona/dbaas-operator-bundle:0.0.15
   - Image: docker.io/percona/dbaas-operator-bundle:0.0.17
   - Image: docker.io/percona/dbaas-operator-bundle:0.0.18
   - Image: docker.io/percona/dbaas-operator-bundle:0.0.19
+  - Image: docker.io/percona/dbaas-operator-bundle:0.1.1
