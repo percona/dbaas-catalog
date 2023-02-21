@@ -24,6 +24,8 @@ Because all levels of the catalog hierarchy need to be able to pass an opm valid
 
 ## Add or Update operator catalog
 
+Install latest `opm` tool: https://github.com/operator-framework/operator-registry/releases/latest
+
 To add new operator - create `veneer.yaml`:
 
 ```sh
