@@ -7,8 +7,6 @@ spec:
   displayName: DBaaS Platform Catalog
   publisher: DBaaS Community
   sourceType: grpc
-  grpcPodConfig:
-    securityContextConfig: restricted
   image: ghcr.io/percona/dbaas-catalog:latest
   updateStrategy:
     registryPoll:
