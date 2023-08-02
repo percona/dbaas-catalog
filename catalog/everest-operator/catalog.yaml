@@ -4,14 +4,18 @@ name: everest-operator
 schema: olm.package
 ---
 entries:
+- name: everest-operator.v0.0.5
+name: fast-v0
+package: everest-operator
+schema: olm.channel
+---
+entries:
 - name: everest-operator.v0.0.2
 - name: everest-operator.v0.0.3
 - name: everest-operator.v0.0.4
-- name: everest-operator.v0.0.5
   skips:
   - everest-operator.v0.0.2
   - everest-operator.v0.0.3
-  - everest-operator.v0.0.4
 name: stable-v0
 package: everest-operator
 schema: olm.channel
