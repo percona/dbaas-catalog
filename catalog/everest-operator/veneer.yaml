@@ -4,6 +4,7 @@ GenerateMinorChannels: false
 Fast:
   Bundles:
   - Image: docker.io/percona/everest-operator-bundle:0.0.5
+  - Image: docker.io/percona/everest-operator-bundle:0.0.6
 Stable:
   Bundles:
   - Image: docker.io/percona/everest-operator-bundle:0.0.2
