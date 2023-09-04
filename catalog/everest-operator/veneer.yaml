@@ -6,7 +6,6 @@ Fast:
   - Image: docker.io/percona/everest-operator-bundle:0.0.5
 Stable:
   Bundles:
-  - Image: docker.io/percona/everest-operator-bundle:0.0.9
-  - Image: docker.io/percona/everest-operator-bundle:0.0.10
-  - Image: docker.io/percona/everest-operator-bundle:0.0.11
   - Image: docker.io/percona/everest-operator-bundle:0.0.12
+  - Image: docker.io/percona/everest-operator-bundle:0.0.13
+  - Image: docker.io/percona/everest-operator-bundle:0.0.14
