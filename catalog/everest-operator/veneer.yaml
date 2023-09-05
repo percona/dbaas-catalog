@@ -9,3 +9,4 @@ Stable:
   - Image: docker.io/percona/everest-operator-bundle:0.0.12
   - Image: docker.io/percona/everest-operator-bundle:0.0.13
   - Image: docker.io/percona/everest-operator-bundle:0.0.14
+  - Image: docker.io/percona/everest-operator-bundle:0.0.15
